@@ -1,0 +1,10 @@
+This is an application for entering information, where you will record the title, description, image, etc.
+
+SOME LOREM TEXT
+
+The technologies that are used:
+-- cleanenv(read config.yaml file)
+-- Routing - chi
+-- Logging - log/slog
+-- DB- PostgresQL
+... it's not finish tech in this project

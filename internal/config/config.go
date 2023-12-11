@@ -9,9 +9,17 @@ import (
 )
 
 type Config struct {
-	Env  string `yaml:"env" env-default:"local"`
-	Host string `yaml:"host" env-default:"localhost"`
-	Port int    `yaml:"port" env-required:"true"`
+	Env      string         `yaml:"env" env-default:"local"`
+	Host     string         `yaml:"host" env-default:"localhost"`
+	Port     int            `yaml:"port" env-required:"true"`
+	LogLevel LogLevelStruct `yaml:"log_level"`
+}
+
+type LogLevelStruct struct {
+	LevelDebug int `yaml:"level_debug"`
+	LevelInfo  int `yaml:"level_info"`
+	LevelWarn  int `yaml:"level_warn"`
+	LevelError int `yaml:"level_error"`
 }
 
 // mustLoad - this fn must Load config file(required)

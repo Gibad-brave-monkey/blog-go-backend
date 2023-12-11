@@ -6,5 +6,8 @@ The technologies that are used:
 -- cleanenv(read config.yaml file)
 -- Routing - chi
 -- Logging - log/slog
+-- Docker(will add)
+->
 -- DB- PostgresQL
+
 ... it's not finish tech in this project

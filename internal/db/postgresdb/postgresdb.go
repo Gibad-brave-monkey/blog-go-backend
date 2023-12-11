@@ -37,3 +37,11 @@ func NewPostgresDB(ctx context.Context, logger *slog.Logger, cfg config.DBConfig
 
 	return &PostgresDB{db: db, logger: logger}, nil
 }
+
+// Close DB connection
+func (p *PostgresDB) Close() {
+	if p.db != nil {
+		p.db.Close()
+		p.logger.Info("Closed DB connection")
+	}
+}

@@ -10,3 +10,6 @@ build:
 
 run: build
 	./${BINARY_FILE_NAME}
+
+docker_container:
+	docker-compose up -d

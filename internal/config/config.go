@@ -13,6 +13,7 @@ type Config struct {
 	Host     string         `yaml:"host" env-default:"localhost"`
 	Port     int            `yaml:"port" env-required:"true"`
 	LogLevel LogLevelStruct `yaml:"log_level"`
+	DB       DBConfig       `yaml:"postgres_db`
 }
 
 type LogLevelStruct struct {
@@ -20,6 +21,14 @@ type LogLevelStruct struct {
 	LevelInfo  int `yaml:"level_info"`
 	LevelWarn  int `yaml:"level_warn"`
 	LevelError int `yaml:"level_error"`
+}
+
+type DBConfig struct {
+	DBHost     string `yaml:"db_host" env-default:"localhost"`
+	DBPort     int    `yaml:"db_port" env-default:"5432"`
+	DBUser     string `yaml:"db_user" env-default:"admin"`
+	DBPassword string `yaml:"db_password" env-default:"admin"`
+	DBName     string `yaml:"db_name" env-default:"mydatabase"`
 }
 
 // mustLoad - this fn must Load config file(required)

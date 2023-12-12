@@ -13,3 +13,6 @@ run: build
 
 docker_container:
 	docker-compose up -d
+
+migrations_up:
+	go run cmd/migration/main.go

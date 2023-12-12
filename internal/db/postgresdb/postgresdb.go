@@ -18,6 +18,7 @@ type PostgresDB struct {
 
 func NewPostgresDB(ctx context.Context, logger *slog.Logger, cfg config.DBConfig) (*PostgresDB, error) {
 	const op = "db.postgresdb.NewPostgresDB"
+
 	var connectString = fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", cfg.DBHost, cfg.DBPort, cfg.DBUser, cfg.DBPassword, cfg.DBName)
 
 	db, err := sql.Open("postgres", connectString)

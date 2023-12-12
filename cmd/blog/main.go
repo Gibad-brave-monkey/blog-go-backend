@@ -4,11 +4,13 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"net/http"
 	"time"
 
 	config "github.com/Gibad-brave-monkey/blog-go-backend/internal/config"
 	"github.com/Gibad-brave-monkey/blog-go-backend/internal/db/postgresdb"
 	"github.com/Gibad-brave-monkey/blog-go-backend/pkg/logger"
+	"github.com/go-chi/chi/v5"
 )
 
 func main() {
@@ -30,11 +32,18 @@ func main() {
 
 	_ = db
 
+	router := chi.NewRouter()
+
+	server := &http.Server{
+		Addr:         fmt.Sprintf(":%v", cfg.Port),
+		Handler:      router,
+		WriteTimeout: cfg.WriteTimeout,
+		IdleTimeout:  cfg.IdleTimeout,
+	}
+
+	// Run HTTP-server
 	log.Info("Server is running on the:", slog.Int("port:", cfg.Port))
-
-	// router - chi
-
-	// db - PostgresQL
-
-	// run server
+	if err := server.ListenAndServe(); err != nil {
+		panic(err)
+	}
 }

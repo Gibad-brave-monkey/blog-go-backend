@@ -3,17 +3,20 @@ package config
 import (
 	"flag"
 	"os"
+	"time"
 
 	"github.com/ilyakaznacheev/cleanenv"
 	"github.com/joho/godotenv"
 )
 
 type Config struct {
-	Env      string         `yaml:"env" env-default:"local"`
-	Host     string         `yaml:"host" env-default:"localhost"`
-	Port     int            `yaml:"port" env-required:"true"`
-	LogLevel LogLevelStruct `yaml:"log_level"`
-	DB       DBConfig       `yaml:"postgres_db`
+	Env          string         `yaml:"env" env-default:"local"`
+	Host         string         `yaml:"host" env-default:"localhost"`
+	Port         int            `yaml:"port" env-required:"true"`
+	LogLevel     LogLevelStruct `yaml:"log_level"`
+	DB           DBConfig       `yaml:"postgres_db"`
+	WriteTimeout time.Duration  `yaml:"write_timeout" env-default:"60s"`
+	IdleTimeout  time.Duration  `yaml:"idle_timeout" env-default:"60s"`
 }
 
 type LogLevelStruct struct {

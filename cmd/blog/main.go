@@ -9,6 +9,7 @@ import (
 
 	config "github.com/Gibad-brave-monkey/blog-go-backend/internal/config"
 	"github.com/Gibad-brave-monkey/blog-go-backend/internal/db/postgresdb"
+	"github.com/Gibad-brave-monkey/blog-go-backend/internal/routers"
 	"github.com/Gibad-brave-monkey/blog-go-backend/pkg/logger"
 	"github.com/go-chi/chi/v5"
 )
@@ -33,6 +34,8 @@ func main() {
 	_ = db
 
 	router := chi.NewRouter()
+
+	routers.BindRoutesFn(log, router)
 
 	server := &http.Server{
 		Addr:         fmt.Sprintf(":%v", cfg.Port),

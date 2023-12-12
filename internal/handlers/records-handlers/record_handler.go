@@ -3,16 +3,22 @@ package recordsHandlers
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/go-chi/chi/v5"
 )
 
 type RecordsHandlers struct {
 }
 
 func (rh *RecordsHandlers) SaveRecord(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Need to Implement")
-	r.Header.Add("status", "300")
+	fmt.Println("SaveRecord")
 }
 
-func (rh *RecordsHandlers) GetRecords(w http.ResponseWriter, t *http.Request) {
-	fmt.Println("Need to implement")
+func (rh *RecordsHandlers) GetRecords(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("GetRecords")
+}
+
+func (rh *RecordsHandlers) GetRecordById(w http.ResponseWriter, r *http.Request) {
+	id := chi.URLParam(r, "id")
+	fmt.Println("GetRecordById", id)
 }

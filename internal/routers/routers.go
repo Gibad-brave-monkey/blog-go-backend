@@ -14,4 +14,5 @@ func BindRoutesFn(log *slog.Logger, router *chi.Mux) {
 
 	router.Post("/v1/save", rh.SaveRecord)
 	router.Get("/v1/records", rh.GetRecords)
+	router.Get("/v1/records/{id}", rh.GetRecordById)
 }
